@@ -1,0 +1,16 @@
+.container {
+    height: 60vh;
+    padding: 16px 16px 0 16px;
+}
+
+
+@media (max-width:1024px)
+/*테블릿*/
+    {
+    .container {
+        padding: 0px;
+        height: auto;
+    }
+}
+
+

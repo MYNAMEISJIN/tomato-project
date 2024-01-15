@@ -1,0 +1,62 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    mix-blend-mode: difference;
+    color: white;
+    margin: 45px 65px 0 65px;
+
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.menuItems{
+    flex-grow: 0.5;
+    display: flex;
+}
+.menuItems > a{
+    font-size: 1rem;
+    font-weight: bold;
+    padding:0.7rem;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.menuIcon{
+    display: none;
+}
+
+.menuIcon:hover{
+    cursor: pointer;
+}
+
+.teamName{
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width:1024px) /*테블릿*/
+{
+    .menuItems {
+        display: none;
+    }
+    .menuIcon{
+        display: flex;
+        align-items: center;
+    }
+    .teamName{
+        display: none;
+    }
+}

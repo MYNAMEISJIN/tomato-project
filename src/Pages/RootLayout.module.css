@@ -1,0 +1,39 @@
+.container {
+    background-color: #B8B8B8;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width:1024px) /*테블릿*/
+{
+    .container {
+        gap: 0px;
+        display: block;
+    }
+}
+
+
+/* @media (max-width:786px) 
+{
+    .container {
+        gap: 5px;
+    }
+}
+
+@media (max-width:480px) 
+{
+    .container {
+        gap: 0px;
+    }
+} */

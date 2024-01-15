@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import HomePage from './Pages/HomePage';
+import RootLayout, {loader as tomatoDataLoader} from './Pages/RootLayout';
+import TomatoPlanPage from './Pages/TomatoPlanPage';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './util/http';
+import ErrorPage from './Pages/ErrorPage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    //loader:tomatoDataLoader,
+    children: [
+      { path: '/', element: <HomePage /> },
+      { path: '/tomato-plan', element: <TomatoPlanPage /> }
+    ]
+  }
+])
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      < RouterProvider router={router} />
+    </QueryClientProvider >
   );
 }
 
 export default App;
+
+
+//npm
+//react-router-dom
+//react icons
+//react-redux-toolkit
+//react-router-hash-link
+//npm install framer-motion
+//npm i @tanstack/react-query

@@ -1,0 +1,42 @@
+.container {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+}
+
+.defaultView {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.carouselView {
+    display: none;
+}
+
+
+
+@media (max-width:1024px)
+/*테블릿*/
+    {
+    .container {
+        border-radius: 0;
+    }
+
+    .defaultView {
+        display: none;
+    }
+
+    .carouselView {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
