@@ -5,10 +5,11 @@ const initialState = {
 }
 
 const firstSlice = createSlice({
-    name: "mobileMenu",
+    name: "tomatoData",
     initialState: initialState,
     reducers: {
         mobileMenuController: (state) => {
+            
             state.value = !state.value;
         }
     }

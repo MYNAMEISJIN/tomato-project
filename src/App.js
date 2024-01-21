@@ -1,7 +1,7 @@
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import RootLayout, {loader as tomatoDataLoader} from './Pages/RootLayout';
+import RootLayout from './Pages/RootLayout';
 import TomatoPlanPage from './Pages/TomatoPlanPage';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http';
@@ -12,7 +12,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    //loader:tomatoDataLoader,
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/tomato-plan', element: <TomatoPlanPage /> }
@@ -40,3 +39,4 @@ export default App;
 //react-router-hash-link
 //npm install framer-motion
 //npm i @tanstack/react-query
+//npm i socket.io-client

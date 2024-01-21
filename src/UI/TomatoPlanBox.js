@@ -2,10 +2,11 @@ import classes from "./TomatoPlanBox.module.css"
 
 
 const TomatoPlanBox = (props) => {
+
     return (
         <div className={classes.container}>
             <div classes={classes.date}>
-                {props.data.date} <span style={{color:`${props.dayCheck[1]}`}}>({props.dayCheck[0]})</span>
+                {props.data.tomato_date} <div style={{color:`${props.dayCheck[1]}`}}>({props.dayCheck[0]})</div>
             </div>
 
             <div className={classes.content}>
@@ -17,7 +18,7 @@ const TomatoPlanBox = (props) => {
                         RT
                     </div>
                     <div>
-                        {props.data.rt}
+                        {props.data.redtomato}
                     </div>
                 </div>
                 <div className={classes.contentDetail}>
@@ -25,7 +26,7 @@ const TomatoPlanBox = (props) => {
                         UT
                     </div>
                     <div>
-                        {props.data.ut}
+                    {props.data.greentomato+props.data.yellowtomato}
                     </div>
                 </div>
             </div>

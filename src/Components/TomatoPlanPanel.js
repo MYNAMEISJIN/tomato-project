@@ -5,72 +5,17 @@ import Carousel from "../UI/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion"
 import { tomatoPlanMenuAnimationTriggerController } from "../store/slices/animationSlice";
-import { useQuery } from "@tanstack/react-query";
-import fetchTomatoData from "../util/http";
-import { useLoaderData } from "react-router-dom";
 
-const DUMMY_TOMATO_PLAN_DATA = [
-    {
-        id: 1,
-        rt: 7,
-        ut: 9,
-        date: "2024.03.19"
-    },
-    {
-        id: 2,
-        rt: 10,
-        ut: 9,
-        date: "2024.03.20"
-    },
-    {
-        id: 3,
-        rt: 2,
-        ut: 1,
-        date: "2024.03.21"
-    },
-    {
-        id: 4,
-        rt: 8,
-        ut: 9,
-        date: "2024.03.22"
-    },
-    {
-        id: 5,
-        rt: 7,
-        ut: 9,
-        date: "2024.03.23"
-    },
-    {
-        id: 6,
-        rt: 10,
-        ut: 2,
-        date: "2024.03.24"
-    },
-    {
-        id: 7,
-        rt: 5,
-        ut: 7,
-        date: "2024.03.25"
-    },
-]
+
 
 function TomatoPlanPanel() {
-    const data = useLoaderData()
     const dispatch = useDispatch()
     const TomatoPlanPanelAnimate = useSelector((state) => state.animationReducer.tomatoPlanTrigger)
+    const { tomatoReportByWeek } = useSelector((state) => state.tomatoDataReducer)
     const onAnimationComplete = () => {
         dispatch(tomatoPlanMenuAnimationTriggerController(false));
     };
 
-
-    //   const { data, isPending, isError, error } = useQuery({
-    //     queryKey: ["tomatoData"],
-    //     queryFn: fetchTomatoData,
-    // })
-
-    // console.log(data)
-
-    console.log(data)
 
 
     return <motion.div className={classes.container}
@@ -91,21 +36,20 @@ function TomatoPlanPanel() {
 
 
         <div className={classes.defaultView}>
-            {DUMMY_TOMATO_PLAN_DATA.map((data, index) => (
-                <TomatoPlanBox key={data.id} data={data} dayCheck={index === 0 ? ["당일", "#D10000"] : ["예상", "#828282"]} />
+            {tomatoReportByWeek.map((data, index) => (
+                <TomatoPlanBox key={index} data={data} dayCheck={index === 0 ? ["당일", "#D10000"] : ["예상", "#828282"]} />
             ))}
         </div>
-
-
+    
         <div className={classes.carouselView}>
             <Carousel>
-                {DUMMY_TOMATO_PLAN_DATA.map((data, index) => (
-                    <TomatoPlanBox key={data.id} data={data} dayCheck={index === 0 ? ["당일", "#D10000"] : ["예상", "#828282"]} />
+                {tomatoReportByWeek.map((data, index) => (
+                    <TomatoPlanBox key={index} data={data} dayCheck={index === 0 ? ["당일", "#D10000"] : ["예상", "#828282"]} />
                 ))}
             </Carousel>
         </div>
     </motion.div>
-    
+
 
 
 }
