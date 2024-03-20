@@ -18,12 +18,19 @@ const ImgBox = (props) => {
         socket.emit("button_request", { request: "renewal" });  // 갱신하기 버튼
     }
 
-
+    console.log(props.image)
 
     return (
         <div className={classes.container}>
             <div className={classes.imgContainer}>
-                <img src={`${props.image}`} />
+                {props.image?
+                <img src={`${props.image}`} alt="tomato image"/>
+                :
+                <div className={classes['no-image']}>
+                    no image data
+                </div>
+                }
+                
             </div>
             <div className={classes.controlContainer}>
                 <div className={classes.title}>
@@ -31,13 +38,13 @@ const ImgBox = (props) => {
                 </div>
                 <div className={classes.checkingForRipeness}>
                     <div>
-                        &#128308; {props.report?.redtomato}
+                        &#128308; {props.report?.redtomato?props.report?.redtomato:"there's"}
                     </div>
                     <div>
-                        &#128993; {props.report?.yellowtomato}
+                        &#128993; {props.report?.yellowtomato?props.report?.yellowtomato:"no"}
                     </div>
                     <div>
-                        &#128994; {props.report?.greentomato}
+                        &#128994; {props.report?.greentomato?props.report?.greentomato:"data"}
                     </div>
                 </div>
                 <div>

@@ -74,6 +74,15 @@
     height: 100px;
 }
 
+.no-image{
+    border: solid;
+    height: 100%;
+    
+    width: 400px;
+  
+
+}
+
 @media (max-width:1024px) {
     .container {
         flex-direction: column;
@@ -92,6 +101,14 @@
     }
     .controlContainer{
         gap: 20px;
+    }
+    .no-image{
+        border: solid;
+        height: 300px;
+        
+        width: 100%;
+      
+    
     }
 }
 

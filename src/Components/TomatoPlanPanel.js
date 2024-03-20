@@ -6,6 +6,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion"
 import { tomatoPlanMenuAnimationTriggerController } from "../store/slices/animationSlice";
 
+const DUMMY_TOMATO_PLAN_DATA = [
+    {
+        tomato_date: "no data",
+        redtomato: 0,
+        greentomato: 0,
+        yellowtomato: 0,
+    },
+    {
+        tomato_date: "no data",
+        redtomato: 0,
+        greentomato: 0,
+        yellowtomato: 0,
+    },
+    {
+        tomato_date: "no data",
+        redtomato: 0,
+        greentomato: 0,
+        yellowtomato: 0,
+    }, {
+        tomato_date: "no data",
+        redtomato: 0,
+        greentomato: 0,
+        yellowtomato: 0,
+    }, {
+        tomato_date: "no data",
+        redtomato: 0,
+        greentomato: 0,
+        yellowtomato: 0,
+    }, {
+        tomato_date: "no data",
+        redtomato: 0,
+        greentomato: 0,
+        yellowtomato: 0,
+    },
+]
 
 
 function TomatoPlanPanel() {
@@ -15,7 +50,15 @@ function TomatoPlanPanel() {
     const onAnimationComplete = () => {
         dispatch(tomatoPlanMenuAnimationTriggerController(false));
     };
+    let tomatoData;
 
+
+    if (tomatoReportByWeek.length === 0) {
+        tomatoData = DUMMY_TOMATO_PLAN_DATA;
+
+    } else {
+        tomatoData = tomatoReportByWeek
+    }
 
 
     return <motion.div className={classes.container}
@@ -36,14 +79,14 @@ function TomatoPlanPanel() {
 
 
         <div className={classes.defaultView}>
-            {tomatoReportByWeek.map((data, index) => (
+            {tomatoData.map((data, index) => (
                 <TomatoPlanBox key={index} data={data} dayCheck={index === 0 ? ["당일", "#D10000"] : ["예상", "#828282"]} />
             ))}
         </div>
-    
+
         <div className={classes.carouselView}>
             <Carousel>
-                {tomatoReportByWeek.map((data, index) => (
+                {tomatoData.map((data, index) => (
                     <TomatoPlanBox key={index} data={data} dayCheck={index === 0 ? ["당일", "#D10000"] : ["예상", "#828282"]} />
                 ))}
             </Carousel>
